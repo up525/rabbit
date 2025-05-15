@@ -17,23 +17,21 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'Layout',
       component: Layout,
+      children: [//配置二级路由
+        {
+          path: '',//小技巧,二级路由的path配置为空,在访问一级路由时,会自动渲染二级路由  
+          component: Home
+        },
+        {
+          path: 'category',
+          component: Category
+        }
+      ]
     },
     {
       path: '/login',
-      name: 'login',
-      component: Login,
-    },
-    {
-      path: '/home',
-      name: 'home',
-      component: Layout,
-    },
-    {
-      path: '/category',
-      name: 'category',
-      component: Category,
+      component: Login
     }
   ],
 })
